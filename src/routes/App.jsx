@@ -31,7 +31,7 @@ const App = () => {
 
 	return (
 		<AppContext.Provider value={useInitialState()}>
-			<BrowserRouter>
+			<BrowserRouter basename='/react-eshop'>
 				<Layout>
 					<Routes>
 						<Route exact path='/' element={<Home />} />
