@@ -6,6 +6,11 @@
 	box-sizing: border-box;
 	position: absolute;
 	right: 0;
+	background-color: white;
+	top: 70px;
+	bottom: 0;
+	border-radius: 6px;
+	border: 1px solid var(--very-light-pink);
 }
 .title-container {
 	display: flex;
@@ -55,5 +60,13 @@
 @media (max-width: 640px) {
 	.MyOrder {
 		width: 100%;
+	}
+}
+@keyframes swipeLeft {
+	0% {
+	  width: 0;
+	}
+	100% {
+	  width: 360px;
 	}
 }

@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import OrderItem from '@components/OrderItem';
 import '@styles/MyOrder.scss';
+import AppContext from '@context/AppContext';
 import flechita from '@icons/flechita.svg';
 
 const MyOrder = () => {
+	const {state} = useContext(AppContext);
+
+	const sumTotal = () => {
+		const reducer = (acumulardor, actual) => acumulardor + actual.price;
+		const total = state.cart.reduce(reducer, 0);
+		// console.log(total);
+		return total;
+	}
+
 	return (
 		<aside className="MyOrder">
 			<div className="title-container">
@@ -11,12 +21,16 @@ const MyOrder = () => {
 				<p className="title">My order</p>
 			</div>
 			<div className="my-order-content">
-				<OrderItem />
+				{
+					state.cart.map( product => {
+						return <OrderItem key={`orderItem-${product.id}`} product={product} />;
+					})
+				}
 				<div className="order">
 					<p>
 						<span>Total</span>
 					</p>
-					<p>$560.00</p>
+					<p>$ { sumTotal() }</p>
 				</div>
 				<button className="primary-button">
 					Checkout
